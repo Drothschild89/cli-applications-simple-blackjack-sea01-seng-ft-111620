@@ -28,12 +28,23 @@ def initial_round
   return num
 end
 
-def hit?
-  # code hit? here
+def hit?(num)
+  prompt_user
+  input = get_user_input
+  if input == 's'
+    num
+  elseif input == 'h'
+    num += deal_card
+    num
+  else 
+    invalid_command
+    prompt_user
+    input = get_user_input
+end
 end
 
 def invalid_command
-  # code invalid_command here
+  puts "Please enter a valid command"
 end
 
 #####################################################
@@ -41,6 +52,11 @@ end
 #####################################################
 
 def runner
-  # code runner here
+  welcome
+  x = initial_round
+  while x <= 21
+  x = hit?(x)
+end_game(x)
+end
 end
     
